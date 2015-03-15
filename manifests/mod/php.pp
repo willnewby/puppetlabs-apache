@@ -7,6 +7,7 @@ class apache::mod::php (
   $template       = 'apache/mod/php5.conf.erb',
   $source         = undef,
   $root_group     = $::apache::params::root_group,
+  $loadfile_name  = undef,
 ) inherits apache::params {
 
   if defined(Class['::apache::mod::prefork']) {
@@ -38,6 +39,7 @@ class apache::mod::php (
     package        => $package_name,
     package_ensure => $package_ensure,
     path           => $path,
+    loadfile_name  => $loadfile_name,
   }
 
   include ::apache::mod::mime
